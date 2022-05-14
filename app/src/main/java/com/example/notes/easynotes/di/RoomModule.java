@@ -25,7 +25,7 @@ public class RoomModule {
                 application,
                 NotesDatabase.class,
                 "Notes.db"
-        ).build();
+        ).allowMainThreadQueries().build();
     }
 
     @Singleton
