@@ -15,5 +15,8 @@
         <item name="android:windowBackground">@color/backgroundApp</item>
     </style>
 
+    <style name="MyStyleProgressBar" >
+        <item name="colorSecondary">@color/white</item>
+    </style>
 
 </resources>

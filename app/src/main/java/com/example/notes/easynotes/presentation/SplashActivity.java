@@ -1,4 +1,4 @@
-package com.example.notes.easynotes;
+package com.example.notes.easynotes.presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.os.Handler;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.notes.easynotes.R;
 
 public class SplashActivity extends AppCompatActivity {
 

@@ -1,8 +1,10 @@
-package com.example.notes.easynotes;
+package com.example.notes.easynotes.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.notes.easynotes.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -42,12 +42,17 @@ dependencies {
     implementation "androidx.room:room-rxjava3:2.4.2"
 
     // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0-rc01"
     // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.0-rc01"
 
     //Navigation
     implementation "androidx.navigation:navigation-fragment:2.4.2"
     implementation "androidx.navigation:navigation-ui:2.4.2"
+
+    //Dagger
+    implementation 'javax.inject:javax.inject:1'
+    implementation 'com.google.dagger:dagger:2.36'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.36'
 }
 

@@ -1,20 +1,28 @@
 package com.example.notes.easynotes.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Notes.Database")
+@Entity(tableName = "Notes_Database")
 public class Notes {
 
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    String notesTitle;
+    @ColumnInfo(name = "notes_title")
+    public String notesTitle;
 
-    String notesDescription;
+    @ColumnInfo(name = "notes_description")
+    public String notesDescription;
 
-    String notesDate;
+    @ColumnInfo(name = "notes_date")
+    public String notesDate;
 
-    String notesPriority;
+    @ColumnInfo(name = "notes_priority")
+    public String notesPriority;
+
+    @ColumnInfo(name = "notes_size_font")
+    public String notesSizeFont;
 
 }
