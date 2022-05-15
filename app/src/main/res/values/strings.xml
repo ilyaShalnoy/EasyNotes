@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Easy Notes</string>
+    <string name="create_note">Create you first note !</string>
+    <string name="create_note_image_description">Background image if list is empty</string>
+    <string name="add_note_button">Add note button</string>
+    <string name="edit_text_title">Title</string>
+    <string name="edit_text_description">Description</string>
+    <string name="priority">Priority</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="delete_note_dialog">Are you sure want to delete \n this note?</string>
+    <string name="high">High</string>
+    <string name="icon_sorting_by_priority">icon sorting by priority</string>
+    <string name="medium">Medium</string>
+    <string name="low">Low</string>
+    <string name="create_notes">Create Notes</string>
+    <string name="edit_notes">Edit Notes</string>
+    <string name="delete_note_button">Delete note button</string>
+    <string name="yes_dialog">Yes</string>
+    <string name="no_dialog">No</string>
 </resources>

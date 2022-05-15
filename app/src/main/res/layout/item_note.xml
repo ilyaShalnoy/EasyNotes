@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/greenPriority"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notes_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                tools:text="Список книг для чтения" />
+
+            <TextView
+                android:id="@+id/notes_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:textSize="14sp"
+                tools:text="Чистый код Р.Мартин \n Clean Code Bob \n ........" />
+
+            <TextView
+                android:id="@+id/notes_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:textSize="14sp"
+                tools:text="14 May 2022"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

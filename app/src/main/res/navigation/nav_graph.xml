@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listNotesFragment">
+
+    <fragment
+        android:id="@+id/updateNotesFragment"
+        android:name="com.example.notes.easynotes.presentation.fragments.UpdateNotesFragment"
+        android:label="UpdateNotesFragment"
+        tools:layout="@layout/fragment_update_notes">
+        <action
+            android:id="@+id/action_updateNotesFragment_to_listNotesFragment"
+            app:destination="@id/listNotesFragment" />
+        <argument
+            android:name="data"
+            app:argType="com.example.notes.easynotes.model.Notes" />
+    </fragment>
+    <fragment
+        android:id="@+id/listNotesFragment"
+        android:name="com.example.notes.easynotes.presentation.fragments.ListNotesFragment"
+        android:label="ListNotesFragment"
+        tools:layout="@layout/fragment_list_notes">
+        <action
+            android:id="@+id/action_listNotesFragment_to_updateNotesFragment"
+            app:destination="@id/updateNotesFragment" />
+        <action
+            android:id="@+id/action_listNotesFragment_to_createNotesFragment"
+            app:destination="@id/createNotesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createNotesFragment"
+        android:name="com.example.notes.easynotes.presentation.fragments.CreateNotesFragment"
+        android:label="fragment_create_notes"
+        tools:layout="@layout/fragment_create_notes" >
+        <action
+            android:id="@+id/action_createNotesFragment_to_listNotesFragment"
+            app:destination="@id/listNotesFragment" />
+    </fragment>
+</navigation>

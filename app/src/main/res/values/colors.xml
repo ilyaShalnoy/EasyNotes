@@ -7,4 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--MyApp color-->
+    <color name="backgroundApp">#252525</color>
+    <color name="backgroundAddButton">#020202</color>
+    <color name="backgroundIcon">#3B3B3B</color>
+    <color name="backgroundEditText">#444343</color>
+    <color name="redPriority">#FF9E9E</color>
+    <color name="greenPriority">#91F48F</color>
+    <color name="yellowPriority">#FFF599</color>
+    <color name="noButton">#FF0000</color>
+    <color name="yesButton">#30BE71</color>
+    <color name="dialogDeleteText">#CFCFCF</color>
+
 </resources>
