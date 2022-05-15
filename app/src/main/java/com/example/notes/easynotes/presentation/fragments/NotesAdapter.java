@@ -1,12 +1,11 @@
 package com.example.notes.easynotes.presentation.fragments;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes.easynotes.R;
@@ -49,7 +48,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
     static class NotesViewHolder extends RecyclerView.ViewHolder {
 
-        private ItemNoteBinding binding;
+        private final ItemNoteBinding binding;
 
         public NotesViewHolder(ItemNoteBinding binding) {
             super(binding.getRoot());
@@ -58,20 +57,29 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
         void bind(int position, List<Notes> notes) {
             Notes note = notes.get(position);
+            Context context = itemView.getContext();
 
             binding.notesTitle.setText(note.notesTitle);
             binding.notesDescription.setText(note.notesDescription);
             binding.notesDate.setText(note.notesDate);
 
-            Context context = itemView.getContext();
-
-            if (note.notesPriority.equals("1")) {
-                binding.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.greenPriority));
-            } else if (note.notesPriority.equals("2")) {
-                binding.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.yellowPriority));
-            } else {
-                binding.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.redPriority));
+            switch (note.notesPriority) {
+                case "1":
+                    binding.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.greenPriority));
+                    break;
+                case "2":
+                    binding.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.yellowPriority));
+                    break;
+                case "3":
+                    binding.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.redPriority));
             }
+
+            itemView.setOnClickListener(v -> {
+                final ListNotesFragmentDirections.ActionListNotesFragmentToUpdateNotesFragment action =
+                        ListNotesFragmentDirections.actionListNotesFragmentToUpdateNotesFragment(note);
+
+                Navigation.findNavController(v).navigate(action);
+            });
         }
     }
 

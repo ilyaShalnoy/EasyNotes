@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.example.notes.easynotes.MyApp;
 import com.example.notes.easynotes.R;
@@ -27,7 +28,6 @@ public class CreateNotesFragment extends BaseFragment<FragmentCreateNotesBinding
     @Inject
     ViewModelProvider.Factory viewModelFactory;
     private NotesViewModel notesViewModel;
-    private String title, description;
     private String priority = "1";
 
 
@@ -53,10 +53,10 @@ public class CreateNotesFragment extends BaseFragment<FragmentCreateNotesBinding
         super.onViewCreated(view, savedInstanceState);
 
         binding.saveNoteButton.setOnClickListener(v -> {
-            title = binding.notesTitle.getText().toString();
-            description = binding.notesDescription.getText().toString();
+            String title = binding.notesTitle.getText().toString();
+            String description = binding.notesDescription.getText().toString();
 
-            createNotes(title, description);
+            createNotes(title, description, v);
         });
 
         binding.greenPriority.setOnClickListener(v -> {
@@ -79,9 +79,9 @@ public class CreateNotesFragment extends BaseFragment<FragmentCreateNotesBinding
         });
     }
 
-    private void createNotes(String title, String description) {
+    private void createNotes(String title, String description, View view) {
         Date date = new Date();
-        CharSequence sequence = DateFormat.format("MMMM d, YYYY", date.getTime());
+        CharSequence sequence = DateFormat.format("MMMM d, yyyy", date.getTime());
 
         Notes notes = new Notes();
         notes.notesTitle = title;
@@ -93,5 +93,6 @@ public class CreateNotesFragment extends BaseFragment<FragmentCreateNotesBinding
 
         Toast.makeText(requireContext(), "Note successfully created", Toast.LENGTH_SHORT).show();
 
+        Navigation.findNavController(view).popBackStack();
     }
 }

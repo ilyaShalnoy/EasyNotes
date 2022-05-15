@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_updateNotesFragment_to_listNotesFragment"
             app:destination="@id/listNotesFragment" />
+        <argument
+            android:name="data"
+            app:argType="com.example.notes.easynotes.model.Notes" />
     </fragment>
     <fragment
         android:id="@+id/listNotesFragment"

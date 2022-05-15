@@ -1,11 +1,15 @@
 package com.example.notes.easynotes.model;
 
+import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "Notes_Database")
-public class Notes {
+public class Notes implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     public int id;

@@ -64,6 +64,7 @@ public class ListNotesFragment extends BaseFragment<FragmentListNotesBinding> {
             adapter = new NotesAdapter(notes);
             binding.notesList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
             binding.notesList.setAdapter(adapter);
+            binding.notesList.setHasFixedSize(true);
         });
 
     }
