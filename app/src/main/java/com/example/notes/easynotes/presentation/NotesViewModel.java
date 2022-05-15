@@ -11,12 +11,13 @@ import java.util.List;
 public class NotesViewModel extends ViewModel {
 
     private NotesRepository repository;
-    public LiveData<List<Notes>> getAllNotes;
 
     public NotesViewModel(NotesRepository repository) {
         this.repository = repository;
+    }
 
-        getAllNotes = repository.getAllNotes;
+    public LiveData<List<Notes>> getAllNotes() {
+        return repository.getAllNotes();
     }
 
      public void insertNotes(Notes notes) {

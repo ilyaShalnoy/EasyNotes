@@ -16,11 +16,13 @@ public class NotesRepository {
 
     private final NotesDao notesDao;
 
-    public LiveData<List<Notes>> getAllNotes;
-
     @Inject
     public NotesRepository(NotesDao notesDao) {
         this.notesDao = notesDao;
+    }
+
+    public LiveData<List<Notes>> getAllNotes() {
+     return notesDao.getAllNotes();
     }
 
     public void insertNotes(Notes notes) {
