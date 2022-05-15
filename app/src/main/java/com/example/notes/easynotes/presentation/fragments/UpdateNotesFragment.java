@@ -5,6 +5,7 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -101,9 +102,7 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
             updateNotes(edTitle, edDescription, v);
         });
 
-        binding.btnDeleteNote.setOnClickListener(v -> {
-            deleteNotes(view);
-        });
+        binding.btnDeleteNote.setOnClickListener(v -> deleteNotes(view));
 
     }
 
@@ -120,6 +119,8 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
         updateNotes.notesPriority = edPriority;
 
         viewModel.updateNotes(updateNotes);
+
+        Toast.makeText(requireContext(), "Note successfully update", Toast.LENGTH_SHORT).show();
 
         Navigation.findNavController(view).popBackStack();
     }
@@ -138,14 +139,12 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
         assert yesBtnDialog != null;
         yesBtnDialog.setOnClickListener(v -> {
             viewModel.deleteNotes(oldNote.id);
-            Navigation.findNavController(view).navigate(R.id.action_updateNotesFragment_to_listNotesFragment);
+            Navigation.findNavController(view).popBackStack();
             sheetDialog.dismiss();
         });
 
         assert noBtnDialog != null;
-        noBtnDialog.setOnClickListener(v -> {
-            sheetDialog.dismiss();
-        });
+        noBtnDialog.setOnClickListener(v -> sheetDialog.dismiss());
 
         sheetDialog.show();
 

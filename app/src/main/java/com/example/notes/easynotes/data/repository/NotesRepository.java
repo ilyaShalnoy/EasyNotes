@@ -22,7 +22,19 @@ public class NotesRepository {
     }
 
     public LiveData<List<Notes>> getAllNotes() {
-     return notesDao.getAllNotes();
+        return notesDao.getAllNotes();
+    }
+
+    public LiveData<List<Notes>> getHighNotes() {
+        return notesDao.getHighNotes();
+    }
+
+    public LiveData<List<Notes>> getMediumNotes() {
+        return notesDao.getMediumNotes();
+    }
+
+    public LiveData<List<Notes>> getLowNotes() {
+        return notesDao.getLowNotes();
     }
 
     public void insertNotes(Notes notes) {

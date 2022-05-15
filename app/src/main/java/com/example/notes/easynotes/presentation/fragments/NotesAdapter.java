@@ -18,10 +18,15 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
     private LayoutInflater layoutInflater;
 
-    List<Notes> notes;
+    private List<Notes> notes;
 
     public NotesAdapter(List<Notes> notes) {
         this.notes = notes;
+    }
+
+    public void searchNotes(List<Notes> searchListNotes) {
+        this.notes = searchListNotes;
+        notifyDataSetChanged();
     }
 
     @NonNull
