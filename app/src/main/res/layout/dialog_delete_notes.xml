@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <View
@@ -9,7 +10,7 @@
         android:layout_height="5dp"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:background="@color/backgroundIcon" />
+        android:background="@drawable/bg_btn_filter" />
 
     <TextView
         android:layout_width="match_parent"
@@ -17,28 +18,36 @@
         android:fontFamily="@font/nunito_sans_bold"
         android:gravity="center"
         android:text="@string/delete_note_dialog"
-        android:textColor="@color/white" />
+        android:textColor="@color/dialogDeleteText" />
 
     <TextView
+        android:id="@+id/dialog_yes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/bg_yes_btn"
         android:fontFamily="@font/nunito_sans_bold"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Yes"
+        android:text="@string/yes_dialog"
         android:textColor="@color/white" />
 
     <TextView
+        android:id="@+id/dialog_no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/bg_no_btn"
         android:fontFamily="@font/nunito_sans_bold"
         android:gravity="center"
         android:padding="10dp"
-        android:text="No"
+        android:text="@string/no_dialog"
         android:textColor="@color/white" />
 
 </LinearLayout>

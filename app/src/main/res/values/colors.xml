@@ -18,5 +18,6 @@
     <color name="yellowPriority">#FFF599</color>
     <color name="noButton">#FF0000</color>
     <color name="yesButton">#30BE71</color>
+    <color name="dialogDeleteText">#CFCFCF</color>
 
 </resources>

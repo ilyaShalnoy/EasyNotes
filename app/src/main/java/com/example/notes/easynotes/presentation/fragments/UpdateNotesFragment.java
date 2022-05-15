@@ -16,6 +16,7 @@ import com.example.notes.easynotes.R;
 import com.example.notes.easynotes.databinding.FragmentUpdateNotesBinding;
 import com.example.notes.easynotes.model.Notes;
 import com.example.notes.easynotes.presentation.NotesViewModel;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.Date;
 
@@ -28,7 +29,7 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
 
     private String edPriority = "1";
     private NotesViewModel viewModel;
-    private Notes OldNote;
+    private Notes oldNote;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,6 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
                 .inject(this);
 
         viewModel = new ViewModelProvider(this, viewModelFactory).get(NotesViewModel.class);
-
     }
 
     @Override
@@ -51,12 +51,13 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         final UpdateNotesFragmentArgs data = UpdateNotesFragmentArgs.fromBundle(getArguments());
-        OldNote = data.getData();
+        oldNote = data.getData();
 
-        binding.updateNotesTitle.setText(OldNote.notesTitle);
-        binding.updateNotesDescription.setText(OldNote.notesDescription);
 
-        switch (OldNote.notesPriority) {
+        binding.updateNotesTitle.setText(oldNote.notesTitle);
+        binding.updateNotesDescription.setText(oldNote.notesDescription);
+
+        switch (oldNote.notesPriority) {
             case "1":
                 binding.greenPriority.setImageResource(R.drawable.ic_done);
                 binding.yellowPriority.setImageResource(0);
@@ -99,6 +100,11 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
 
             updateNotes(edTitle, edDescription, v);
         });
+
+        binding.btnDeleteNote.setOnClickListener(v -> {
+            deleteNotes(view);
+        });
+
     }
 
     private void updateNotes(String edTitle, String edDescription, View view) {
@@ -107,7 +113,7 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
         CharSequence sequence = DateFormat.format("MMMM d, yyyy", date.getTime());
 
         Notes updateNotes = new Notes();
-        updateNotes.id = OldNote.id;
+        updateNotes.id = oldNote.id;
         updateNotes.notesTitle = edTitle;
         updateNotes.notesDescription = edDescription;
         updateNotes.notesDate = sequence.toString();
@@ -116,5 +122,32 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
         viewModel.updateNotes(updateNotes);
 
         Navigation.findNavController(view).popBackStack();
+    }
+
+    private void deleteNotes(View view) {
+
+        BottomSheetDialog sheetDialog = new BottomSheetDialog(
+                requireContext(),
+                R.style.AppBottomSheetDialogTheme
+        );
+        sheetDialog.setContentView(R.layout.dialog_delete_notes);
+
+        final View yesBtnDialog = sheetDialog.findViewById(R.id.dialog_yes);
+        final View noBtnDialog = sheetDialog.findViewById(R.id.dialog_no);
+
+        assert yesBtnDialog != null;
+        yesBtnDialog.setOnClickListener(v -> {
+            viewModel.deleteNotes(oldNote.id);
+            Navigation.findNavController(view).navigate(R.id.action_updateNotesFragment_to_listNotesFragment);
+            sheetDialog.dismiss();
+        });
+
+        assert noBtnDialog != null;
+        noBtnDialog.setOnClickListener(v -> {
+            sheetDialog.dismiss();
+        });
+
+        sheetDialog.show();
+
     }
 }
