@@ -17,7 +17,8 @@ import com.example.notes.easynotes.MyApp;
 import com.example.notes.easynotes.R;
 import com.example.notes.easynotes.databinding.FragmentListNotesBinding;
 import com.example.notes.easynotes.model.Notes;
-import com.example.notes.easynotes.presentation.NotesViewModel;
+import com.example.notes.easynotes.presentation.adapter.NotesAdapter;
+import com.example.notes.easynotes.presentation.viewmodel.NotesViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,6 +103,9 @@ public class ListNotesFragment extends BaseFragment<FragmentListNotesBinding> {
 
         //filter get all notes
         binding.filterAllNotes.setOnClickListener(v -> {
+            binding.filterHigh.setBackgroundResource(R.drawable.bg_btn_filter);
+            binding.filterMedium.setBackgroundResource(R.drawable.bg_btn_filter);
+            binding.filterLow.setBackgroundResource(R.drawable.bg_btn_filter);
             notesViewModel.getAllNotes().observe(getViewLifecycleOwner(), notes -> {
                 filterNotesList = notes;
                 setAdapter(notes);
@@ -118,14 +122,11 @@ public class ListNotesFragment extends BaseFragment<FragmentListNotesBinding> {
             filterNotesList = notes;
         });
 
-        binding.searchNotesBtn.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    binding.titleApp.setVisibility(View.GONE);
-                } else {
-                    binding.titleApp.setVisibility(View.VISIBLE);
-                }
+        binding.searchNotesBtn.setOnQueryTextFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                binding.titleApp.setVisibility(View.GONE);
+            } else {
+                binding.titleApp.setVisibility(View.VISIBLE);
             }
         });
 
@@ -150,9 +151,15 @@ public class ListNotesFragment extends BaseFragment<FragmentListNotesBinding> {
             if (note.notesTitle.contains(newText)) {
                 newFilterNotesList.add(note);
             }
+            if (newFilterNotesList.isEmpty()) {
+                binding.fileNotFoundImage.setVisibility(View.VISIBLE);
+                binding.createNotFoundText.setVisibility(View.VISIBLE);
+            } else {
+                binding.fileNotFoundImage.setVisibility(View.INVISIBLE);
+                binding.createNotFoundText.setVisibility(View.INVISIBLE);
+            }
             adapter.searchNotes(newFilterNotesList);
         }
-
     }
 
     private void setAdapter(List<Notes> notes) {

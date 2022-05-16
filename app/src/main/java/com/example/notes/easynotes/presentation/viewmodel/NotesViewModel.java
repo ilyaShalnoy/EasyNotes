@@ -1,4 +1,4 @@
-package com.example.notes.easynotes.presentation;
+package com.example.notes.easynotes.presentation.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;

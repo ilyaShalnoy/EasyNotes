@@ -1,10 +1,11 @@
-package com.example.notes.easynotes.presentation;
+package com.example.notes.easynotes.presentation.viewmodel;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.notes.easynotes.data.repository.NotesRepository;
+import com.example.notes.easynotes.presentation.viewmodel.NotesViewModel;
 
 public class CustomViewModelFactory implements ViewModelProvider.Factory {
 

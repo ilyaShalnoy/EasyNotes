@@ -1,4 +1,4 @@
-package com.example.notes.easynotes.presentation.fragments;
+package com.example.notes.easynotes.presentation.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.notes.easynotes.R;
 import com.example.notes.easynotes.databinding.ItemNoteBinding;
 import com.example.notes.easynotes.model.Notes;
+import com.example.notes.easynotes.presentation.fragments.ListNotesFragmentDirections;
 
 import java.util.List;
 

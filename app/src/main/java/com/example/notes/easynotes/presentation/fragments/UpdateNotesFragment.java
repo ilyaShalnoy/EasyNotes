@@ -16,7 +16,7 @@ import com.example.notes.easynotes.MyApp;
 import com.example.notes.easynotes.R;
 import com.example.notes.easynotes.databinding.FragmentUpdateNotesBinding;
 import com.example.notes.easynotes.model.Notes;
-import com.example.notes.easynotes.presentation.NotesViewModel;
+import com.example.notes.easynotes.presentation.viewmodel.NotesViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.Date;
@@ -118,11 +118,13 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
         updateNotes.notesDate = sequence.toString();
         updateNotes.notesPriority = edPriority;
 
-        viewModel.updateNotes(updateNotes);
-
-        Toast.makeText(requireContext(), "Note successfully update", Toast.LENGTH_SHORT).show();
-
-        Navigation.findNavController(view).popBackStack();
+        if (updateNotes.notesTitle.equals("")) {
+            Toast.makeText(requireContext(), "Note title is required", Toast.LENGTH_SHORT).show();
+        } else {
+            viewModel.updateNotes(updateNotes);
+            Toast.makeText(requireContext(), "Note successfully update", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).popBackStack();
+        }
     }
 
     private void deleteNotes(View view) {

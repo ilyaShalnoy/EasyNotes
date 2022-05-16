@@ -1,4 +1,4 @@
-package com.example.notes.easynotes.presentation;
+package com.example.notes.easynotes.presentation.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;

@@ -1,4 +1,4 @@
-package com.example.notes.easynotes.presentation;
+package com.example.notes.easynotes.presentation.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
