@@ -8,7 +8,7 @@ import androidx.room.Room;
 import com.example.notes.easynotes.data.database.NotesDao;
 import com.example.notes.easynotes.data.database.NotesDatabase;
 import com.example.notes.easynotes.data.repository.NotesRepository;
-import com.example.notes.easynotes.presentation.CustomViewModelFactory;
+import com.example.notes.easynotes.presentation.viewmodel.CustomViewModelFactory;
 
 import javax.inject.Singleton;
 

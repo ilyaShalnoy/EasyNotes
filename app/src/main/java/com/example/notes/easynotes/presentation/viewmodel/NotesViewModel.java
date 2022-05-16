@@ -1,4 +1,4 @@
-package com.example.notes.easynotes.presentation;
+package com.example.notes.easynotes.presentation.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
@@ -20,15 +20,28 @@ public class NotesViewModel extends ViewModel {
         return repository.getAllNotes();
     }
 
-     public void insertNotes(Notes notes) {
+    public LiveData<List<Notes>> getHighNotes() {
+        return repository.getHighNotes();
+    }
+
+    public LiveData<List<Notes>> getMediumNotes() {
+        return repository.getMediumNotes();
+    }
+
+    public LiveData<List<Notes>> getLowNotes() {
+        return repository.getLowNotes();
+    }
+
+
+    public void insertNotes(Notes notes) {
         repository.insertNotes(notes);
-     }
+    }
 
-     public void deleteNotes(int id) {
+    public void deleteNotes(int id) {
         repository.deleteNotes(id);
-     }
+    }
 
-     public void updateNotes(Notes notes) {
+    public void updateNotes(Notes notes) {
         repository.updateNotes(notes);
-     }
+    }
 }

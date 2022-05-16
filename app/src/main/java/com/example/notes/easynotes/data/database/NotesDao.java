@@ -18,6 +18,15 @@ public interface NotesDao {
     @Query("SELECT * FROM Notes_Database")
     LiveData<List<Notes>> getAllNotes();
 
+    @Query("SELECT * FROM Notes_Database WHERE notes_priority = 3")
+    LiveData<List<Notes>> getHighNotes();
+
+    @Query("SELECT * FROM Notes_Database WHERE notes_priority = 2")
+    LiveData<List<Notes>> getMediumNotes();
+
+    @Query("SELECT * FROM Notes_Database WHERE notes_priority = 1")
+    LiveData<List<Notes>> getLowNotes();
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertNotes(Notes... notes);
 

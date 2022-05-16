@@ -18,4 +18,6 @@
     <string name="delete_note_button">Delete note button</string>
     <string name="yes_dialog">Yes</string>
     <string name="no_dialog">No</string>
+    <string name="search_btn">Search by Notes</string>
+    <string name="file_not_found">File not found. Try searching again.</string>
 </resources>

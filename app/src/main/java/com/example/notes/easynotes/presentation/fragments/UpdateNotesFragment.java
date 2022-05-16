@@ -5,6 +5,7 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,7 +16,7 @@ import com.example.notes.easynotes.MyApp;
 import com.example.notes.easynotes.R;
 import com.example.notes.easynotes.databinding.FragmentUpdateNotesBinding;
 import com.example.notes.easynotes.model.Notes;
-import com.example.notes.easynotes.presentation.NotesViewModel;
+import com.example.notes.easynotes.presentation.viewmodel.NotesViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.Date;
@@ -101,9 +102,7 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
             updateNotes(edTitle, edDescription, v);
         });
 
-        binding.btnDeleteNote.setOnClickListener(v -> {
-            deleteNotes(view);
-        });
+        binding.btnDeleteNote.setOnClickListener(v -> deleteNotes(view));
 
     }
 
@@ -119,9 +118,13 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
         updateNotes.notesDate = sequence.toString();
         updateNotes.notesPriority = edPriority;
 
-        viewModel.updateNotes(updateNotes);
-
-        Navigation.findNavController(view).popBackStack();
+        if (updateNotes.notesTitle.equals("")) {
+            Toast.makeText(requireContext(), "Note title is required", Toast.LENGTH_SHORT).show();
+        } else {
+            viewModel.updateNotes(updateNotes);
+            Toast.makeText(requireContext(), "Note successfully update", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).popBackStack();
+        }
     }
 
     private void deleteNotes(View view) {
@@ -138,14 +141,12 @@ public class UpdateNotesFragment extends BaseFragment<FragmentUpdateNotesBinding
         assert yesBtnDialog != null;
         yesBtnDialog.setOnClickListener(v -> {
             viewModel.deleteNotes(oldNote.id);
-            Navigation.findNavController(view).navigate(R.id.action_updateNotesFragment_to_listNotesFragment);
+            Navigation.findNavController(view).popBackStack();
             sheetDialog.dismiss();
         });
 
         assert noBtnDialog != null;
-        noBtnDialog.setOnClickListener(v -> {
-            sheetDialog.dismiss();
-        });
+        noBtnDialog.setOnClickListener(v -> sheetDialog.dismiss());
 
         sheetDialog.show();
 

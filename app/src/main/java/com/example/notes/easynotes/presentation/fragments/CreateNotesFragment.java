@@ -16,7 +16,7 @@ import com.example.notes.easynotes.MyApp;
 import com.example.notes.easynotes.R;
 import com.example.notes.easynotes.databinding.FragmentCreateNotesBinding;
 import com.example.notes.easynotes.model.Notes;
-import com.example.notes.easynotes.presentation.NotesViewModel;
+import com.example.notes.easynotes.presentation.viewmodel.NotesViewModel;
 
 import java.util.Date;
 
@@ -89,10 +89,12 @@ public class CreateNotesFragment extends BaseFragment<FragmentCreateNotesBinding
         notes.notesDate = sequence.toString();
         notes.notesPriority = priority;
 
-        notesViewModel.insertNotes(notes);
-
-        Toast.makeText(requireContext(), "Note successfully created", Toast.LENGTH_SHORT).show();
-
-        Navigation.findNavController(view).popBackStack();
+        if (notes.notesTitle.equals("")) {
+            Toast.makeText(requireContext(), "Note title is required", Toast.LENGTH_SHORT).show();
+        } else {
+            notesViewModel.insertNotes(notes);
+            Toast.makeText(requireContext(), "Note successfully created", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).popBackStack();
+        }
     }
 }
